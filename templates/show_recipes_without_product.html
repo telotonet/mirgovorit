@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Рецепты без продукта
+{% endblock %}
+
+
+{% block body %}
+    <h1>Рецепты без Определенного Продукта</h1>
+    <table>
+        <tr>
+            <th>ID Рецепта</th>
+            <th>Название Рецепта</th>
+        </tr>
+        {% for recipe in recipes %}
+        <tr>
+            <td>{{ recipe.id }}</td>
+            <td>{{ recipe.name }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="2">Нет рецептов без этого продукта.</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
